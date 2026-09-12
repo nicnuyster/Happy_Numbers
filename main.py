@@ -1,9 +1,15 @@
+import time
+
 def IsHappy(n):
-    seen = set() #множество
+    start = time.monotonic()
+    seen = set()
 
     while n != 1 and n not in seen:
         seen.add(n)
         summ = 0
+
+        if time.monotonic() - start > 10.0:
+            return 0
 
         for digit in str(n):
             summ += int(digit) ** 2 
